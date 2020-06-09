@@ -78,9 +78,15 @@
 
 <!--*********************************************** TOKEN EXIST*****************************************************-->
 <ion-content  mode="ios" *ngIf="token">
+  <ion-card mode="ios">
+    <ion-item>
+      <ion-avatar slot="start" style="width: 70px ;height: 70px;">
+        <img  src="assets/background/logo1.png" >
+      </ion-avatar>
+      <ion-card-title style="font-family: Granada">AKINOBANK</ion-card-title>
+    </ion-item>
+  </ion-card>
  <app-navbar></app-navbar>
-
-  <br><br><br><br>
   <ion-card>
     <!--      <ion-card-content>-->
     <ion-card>
@@ -104,6 +110,18 @@
 
   <ion-card id="buttonSubmit">
     <ion-button type="submit" expand="block" color="primary" (click)="push()">Scan</ion-button>
+  </ion-card>
+
+  <ion-card id="buttonSubmit" *ngIf="scannedCode">
+    <ion-item>
+      <ion-card-subtitle style="font-family: Granada">votre dernier code Qr</ion-card-subtitle>
+    </ion-item>
+    <ion-item>
+      <ion-avatar slot="start" style="width: 70px ;height: 70px;">
+        <img  src="assets/background/logo2.png" >
+      </ion-avatar>
+      <ion-card-title style="font-family: Granada">{{scannedCode}}</ion-card-title>
+    </ion-item>
   </ion-card>
   <!--  <button class="bottom" ion-button clear full color="light">Don't have an account? Sign up</button>-->
 </ion-content>
