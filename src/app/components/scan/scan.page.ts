@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-// import {BarcodeScanner} from '@ionic-native/barcode-scanner/ngx';
-import {NavController, ToastController} from '@ionic/angular';
+import {AlertController, NavController, Platform, ToastController} from '@ionic/angular';
 import {LoginService} from '../../services/login/login.service';
-// import {BarcodeScanner} from '@ionic-native/barcode-scanner/ngx';
-// import {Base64ToGallery} from '@ionic-native/base64-to-gallery/ngx';
-import {QRScanner, QRScannerStatus} from '@ionic-native/qr-scanner';
+import {AndroidPermissions} from '@ionic-native/android-permissions/ngx';
+import {NgxQRCodeModule} from '@techiediaries/ngx-qrcode';
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
+import {CamerapagePage} from '../camerapage/camerapage.page';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-scan',
@@ -17,8 +18,24 @@ export class ScanPage implements OnInit {
     qrData ="KHALIL";
     title = 'app';
     elementType = 'url';
+    public showCamera = false;
+    public textScanned: string = null;
 
-  constructor(private toastCtrl:ToastController ,private loginService : LoginService , private navCtrl: NavController  ) { }
+
+    constructor(private activatedRoute: ActivatedRoute,
+        private qrScanner: QRScanner,
+                public alertController: AlertController ,
+                public platform:Platform,
+                private toastCtrl:ToastController ,
+                private loginService : LoginService , private navCtrl: NavController  ) {
+
+        // this.scancode();
+        // alert(this.textScanned);
+        // this.scannedCode = this.activatedRoute.snapshot.params.id;
+        // localStorage.setItem('code', this.scannedCode);
+
+
+    }
 
 
   token :string;
@@ -26,13 +43,14 @@ export class ScanPage implements OnInit {
       this.token = localStorage.getItem('token');
   }
 
-  // createCode(){
-  //     this.createdCode =this.qrData
-  // }
+    ionViewWillEnter(){
+        this.scannedCode = localStorage.getItem('code');
+        console.log(localStorage.getItem('code'));
 
-  scan() {
-      console.log("scan")
-  }
+    }
+      // alert(this.textScanned);}
+
+
 
     logout() {
         this.loginService.logout().subscribe(response =>{
@@ -51,6 +69,10 @@ export class ScanPage implements OnInit {
       else{
           this.navCtrl.navigateBack("home")
       }
+    }
+
+    push() {
+        this.navCtrl.navigateForward("camerapage");
     }
 
 }

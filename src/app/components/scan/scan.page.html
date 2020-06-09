@@ -20,8 +20,6 @@
 <!--****************************************** NO TOKEN *********************************************************-->
 
 <ion-content class="background" mode="ios" *ngIf="!token">
-
-  <br><br><br>
   <ion-card mode="ios">
     <ion-item>
       <ion-avatar slot="start" style="width: 70px ;height: 70px;">
@@ -46,44 +44,39 @@
   </ion-tabs>
 
   <ion-card>
-          <ion-card>
+          <ion-card >
             <ion-item mode="ios">
               <ion-icon name="qr-code-outline" slot="start"></ion-icon>
               <ion-label>Bienvenue à AKINOBANK</ion-label>
             </ion-item>
 
-            <ion-card-content>
+            <ion-card-content >
               Cliquez sur scan si vous souhaitez scanner votre code QR
             </ion-card-content>
 
           </ion-card>
 
-<!--      </ion-card-content>-->
-  </ion-card>
-<!--  <ion-card>-->
-<!--    <ngx-qrcode-->
-<!--            [elementType]="elementType"-->
-<!--            [value] = "qrData">-->
-<!--    </ngx-qrcode>-->
 
-<!--  </ion-card>-->
-<!--  <ion-card *ngIf="scannedCode">-->
-<!--    <ion-card-content >-->
-<!--      Value : {{scannedCode}}-->
-<!--    </ion-card-content>-->
-<!--  </ion-card>-->
+
+  </ion-card>
 
   <ion-card id="buttonSubmit">
-    <ion-button type="submit" expand="block" color="primary" (click)="scan()">Scan</ion-button>
+    <ion-button type="submit" expand="block" color="primary" (click)="push()">Scan</ion-button>
   </ion-card>
+
+    <ion-card id="buttonSubmit" *ngIf="scannedCode">
+      <ion-item>
+        <ion-avatar slot="start" style="width: 70px ;height: 70px;">
+          <img  src="assets/background/logo2.png" >
+        </ion-avatar>
+        <ion-card-title style="font-family: Granada">{{scannedCode}}</ion-card-title>
+      </ion-item>
+    </ion-card>
   <!--  <button class="bottom" ion-button clear full color="light">Don't have an account? Sign up</button>-->
 </ion-content>
 
 
-
-
-
-
+<!--*********************************************** TOKEN EXIST*****************************************************-->
 <ion-content  mode="ios" *ngIf="token">
  <app-navbar></app-navbar>
 
@@ -99,25 +92,19 @@
       <ion-card-content>
         Cliquez sur scan si vous souhaitez scanner votre code QR
       </ion-card-content>
-      <ion-button type="submit" expand="block" color="primary" (click)="scan()">Scan</ion-button>
 
     </ion-card>
     <!--      </ion-card-content>-->
   </ion-card>
-  <ion-card>
-    <ngx-qrcode
-            [elementType]="elementType"
-            [value] = "qrData"
-            cssClass = "aclass"
-            errorCorrectionLevel = "L">
-    </ngx-qrcode>
-  </ion-card>
-  <ion-card *ngIf="scannedCode">
-    <ion-card-content >
-      Value : {{scannedCode}}
-    </ion-card-content>
-  </ion-card>
+<!--  <ion-card *ngIf="scannedCode">-->
+<!--    <ion-card-content >-->
+<!--      Value : {{scannedCode}}-->
+<!--    </ion-card-content>-->
+<!--  </ion-card>-->
 
+  <ion-card id="buttonSubmit">
+    <ion-button type="submit" expand="block" color="primary" (click)="push()">Scan</ion-button>
+  </ion-card>
   <!--  <button class="bottom" ion-button clear full color="light">Don't have an account? Sign up</button>-->
 </ion-content>
 
