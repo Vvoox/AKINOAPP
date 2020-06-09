@@ -1,0 +1,77 @@
+<!--<ion-header>-->
+<!--  <ion-toolbar mode="ios">-->
+<!--    <ion-title>-->
+<!--      S'identifier-->
+<!--    </ion-title>-->
+<!--&lt;!&ndash;    <ion-icon slot="end" name="analytics"></ion-icon>&ndash;&gt;-->
+<!--&lt;!&ndash;    <ion-buttons slot="start">&ndash;&gt;-->
+<!--&lt;!&ndash;      <ion-buttons slot="start">&ndash;&gt;-->
+<!--&lt;!&ndash;        <ion-back-button defaultHref="home"></ion-back-button>&ndash;&gt;-->
+<!--&lt;!&ndash;      </ion-buttons>&ndash;&gt;-->
+<!--&lt;!&ndash;    </ion-buttons>&ndash;&gt;-->
+<!--    </ion-toolbar>-->
+<!--</ion-header>-->
+<ion-content class="background" mode="ios">
+  <form [formGroup]="loginFormGroup" (ngSubmit)="presentLoading()" >
+
+  <br><br><br>
+  <ion-card mode="ios">
+    <ion-item>
+      <ion-avatar slot="start" style="width: 60px ;height: 60px;">
+        <img  src="assets/background/logo1.png" >
+      </ion-avatar>
+        <ion-card-title style="font-family: Granada">AKINOBANK</ion-card-title>
+
+    </ion-item>
+  </ion-card>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+
+      <ion-tab-button tab="home">
+        <ion-icon name="home"></ion-icon>
+        <ion-label>S'identifier</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="scan">
+        <ion-icon name="scan-outline"></ion-icon>
+        <ion-label>Scan QR</ion-label>
+      </ion-tab-button>
+
+    </ion-tab-bar>
+  </ion-tabs>
+  <ion-card>
+
+    <ion-card-header >
+      Bienvenue à AKINOBANK
+      <ion-icon name="trending-up-outline"></ion-icon>
+    </ion-card-header>
+      <ion-card-content>
+        <ion-list no-line>
+          <ion-item>
+            <ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="password" placeholder="mot de passe" formControlName="password"></ion-input>
+          </ion-item>
+          <br>
+          <div>
+            <a class="ion-margin-start ion-margin-top" style="cursor: pointer" (click)="forgetPassword()">Vous avez oublié vos informations?</a>
+          </div>
+          <div *ngIf="error != null">
+            <a class="ion-margin-start ion-margin-top" style="cursor: pointer ; color: brown" >{{error}}</a>
+          </div>
+          <br>
+        </ion-list>
+      </ion-card-content>
+
+  </ion-card>
+
+  <ion-card id="buttonSubmit">
+    <ion-button type="submit" expand="block" color="primary" [disabled]="!loginFormGroup.valid" >Connect</ion-button>
+
+  </ion-card>
+  </form>
+
+  <!--  <button class="bottom" ion-button clear full color="light">Don't have an account? Sign up</button>-->
+</ion-content>
+

@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  loginHost : 'http://192.168.1.100:8080/api',
+  logout : 'http://192.168.1.100:8080/api/logout',
+  host : 'http://192.168.1.100:8080/client/api'
 };
 
 /*
