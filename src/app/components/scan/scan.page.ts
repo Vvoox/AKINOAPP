@@ -102,6 +102,7 @@ export class ScanPage implements OnInit {
     processCountDown() {
       if(this.counter == 0){
           console.log("end");
+          this.ngOnInit();
           this.ionViewWillEnter();
           this.counter = 30;
       }
