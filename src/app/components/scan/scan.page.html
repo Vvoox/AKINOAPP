@@ -77,8 +77,12 @@
           <ion-button   color="danger"  fill="outline" style="font-weight: bold" (click)="deleteQRSession()"><ion-icon name="trash"></ion-icon>
           </ion-button>
           </ion-buttons>
+          <ion-item-divider *ngIf="qrUrl">
+            <ion-label>{{errorQR}}</ion-label>
+          </ion-item-divider>
         </ion-item-divider>
     </ion-card>
+
 
 <!--  <ion-card id="buttonSubmit" *ngIf="scannedCode">-->
 <!--    <ion-item>-->

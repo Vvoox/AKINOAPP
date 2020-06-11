@@ -51,6 +51,9 @@ export class ScanPage implements OnInit {
   ngOnInit() {
       this.token = localStorage.getItem('token');
       this.counter=30;
+      this.numb=1;
+      this.doCountDown();
+
       // if(localStorage.getItem('url')) {
       //     this.qrUrl=true;
       //     let uri = localStorage.getItem('url');
@@ -63,13 +66,30 @@ export class ScanPage implements OnInit {
     //
     ionViewWillEnter(){
         if(localStorage.getItem('url')) {
-            this.qrUrl=true;
-            let uri = localStorage.getItem('url');
-            let parsedTotp = OTPAuth.URI.parse(uri);
-            this.scannedCode = parsedTotp.generate();
-            this.doCountDown();
-        }
+           try{
+               this.qrUrl=true;
+               let uri = localStorage.getItem('url');
+               let parsedTotp = OTPAuth.URI.parse(uri);
+               this.scannedCode = parsedTotp.generate();
+               localStorage.setItem('lastUrl',uri);
+           } catch (e) {
+               if(localStorage.getItem('lastUrl')) {
+                   localStorage.setItem('url',localStorage.getItem('lastUrl'));
+                   this.qrUrl = true;
+                   this.errorQR = "Incorrect QR";
+                   this.navCtrl.navigateForward("scan/scan");
+               }
+               else {
+                   this.errorQR = "Incorrect QR";
 
+                   localStorage.removeItem('url');
+                   // this.navCtrl.navigateForward("scan/scan");
+
+
+               }
+           }
+        }
+        
     }
 
     doCountDown(){
