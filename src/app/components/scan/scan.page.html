@@ -19,15 +19,16 @@
 
 <!--****************************************** NO TOKEN *********************************************************-->
 
-<ion-content class="background" mode="ios" *ngIf="!token">
-  <ion-card mode="ios">
+<ion-content mode="ios" *ngIf="!token">
+  <br><br>
+  <ion-card-content mode="ios">
     <ion-item>
       <ion-avatar slot="start" style="width: 70px ;height: 70px;">
         <img  src="assets/background/logo1.png" >
       </ion-avatar>
         <ion-card-title style="font-family: Granada">AKINOBANK</ion-card-title>
     </ion-item>
-  </ion-card>
+  </ion-card-content>
 
 
   <ion-tabs>
@@ -44,7 +45,7 @@
   </ion-tabs>
 
   <ion-card>
-          <ion-card >
+          <ion-card-content >
             <ion-item mode="ios">
               <ion-icon name="qr-code-outline" slot="start"></ion-icon>
               <ion-label>Bienvenue à AKINOBANK</ion-label>
@@ -54,38 +55,50 @@
               Cliquez sur scan si vous souhaitez scanner votre code QR
             </ion-card-content>
 
-          </ion-card>
+          </ion-card-content>
 
 
 
   </ion-card>
 
-  <ion-card id="buttonSubmit">
+  <ion-card-content >
     <ion-button type="submit" expand="block" color="primary" (click)="push()">Scan</ion-button>
-  </ion-card>
+  </ion-card-content>
 
     <ion-card id="buttonSubmit" *ngIf="scannedCode">
-      <ion-item>
-        <ion-avatar slot="start" style="width: 70px ;height: 70px;">
-          <img  src="assets/background/logo2.png" >
-        </ion-avatar>
-        <ion-card-title style="font-family: Granada">{{scannedCode}}</ion-card-title>
-      </ion-item>
+        <ion-item-divider>
+          <ion-avatar slot="start" style="width: 50px ;height: 50px;">
+            <img  src="assets/background/logo2.png" >
+          </ion-avatar>
+          <ion-card-title style="font-family: Granada">{{scannedCode}}</ion-card-title>
+<!--          <ion-label slot="end" >{{counter}}</ion-label>-->
+          <ion-button fill="outline" slot="end"  disabled>{{counter}}</ion-button>
+          <ion-buttons slot="end" >
+          <ion-button   color="danger"  fill="outline" style="font-weight: bold" (click)="deleteQRSession()"><ion-icon name="trash"></ion-icon>
+          </ion-button>
+          </ion-buttons>
+        </ion-item-divider>
     </ion-card>
+
+<!--  <ion-card id="buttonSubmit" *ngIf="scannedCode">-->
+<!--    <ion-item>-->
+<!--      <ion-label>{{errorQR}}</ion-label>-->
+<!--    </ion-item>-->
+<!--  </ion-card>-->
   <!--  <button class="bottom" ion-button clear full color="light">Don't have an account? Sign up</button>-->
 </ion-content>
 
 
 <!--*********************************************** TOKEN EXIST*****************************************************-->
 <ion-content  mode="ios" *ngIf="token">
-  <ion-card mode="ios">
+  <ion-card-content mode="ios">
     <ion-item>
       <ion-avatar slot="start" style="width: 70px ;height: 70px;">
         <img  src="assets/background/logo1.png" >
       </ion-avatar>
       <ion-card-title style="font-family: Granada">AKINOBANK</ion-card-title>
     </ion-item>
-  </ion-card>
+  </ion-card-content>
  <app-navbar></app-navbar>
   <ion-card>
     <!--      <ion-card-content>-->
@@ -112,15 +125,18 @@
     <ion-button type="submit" expand="block" color="primary" (click)="push()">Scan</ion-button>
   </ion-card>
 
-  <ion-card id="buttonSubmit" *ngIf="scannedCode">
+  <ion-card id="buttonSubmit" *ngIf="scannedCode && qrUrl">
     <ion-item>
-      <ion-card-subtitle style="font-family: Granada">votre dernier code Qr</ion-card-subtitle>
-    </ion-item>
-    <ion-item>
-      <ion-avatar slot="start" style="width: 70px ;height: 70px;">
+      <ion-avatar slot="start" style="width: 50px ;height: 50px;">
         <img  src="assets/background/logo2.png" >
       </ion-avatar>
-      <ion-card-title style="font-family: Granada">{{scannedCode}}</ion-card-title>
+      <ion-card-title  style="font-family: Granada">{{scannedCode}}</ion-card-title>
+      <!--          <ion-label slot="end" >{{counter}}</ion-label>-->
+      <ion-button fill="outline" slot="end"  disabled>{{counter}}</ion-button>
+      <ion-buttons slot="end" >
+        <ion-button   color="danger"  fill="outline" style="font-weight: bold" (click)="deleteQRSession()"><ion-icon name="trash"></ion-icon>
+        </ion-button>
+      </ion-buttons>
     </ion-item>
   </ion-card>
   <!--  <button class="bottom" ion-button clear full color="light">Don't have an account? Sign up</button>-->

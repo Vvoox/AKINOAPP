@@ -21,4 +21,8 @@ export class ProfileService {
         headers = headers.append("Authorization", "Bearer " +localStorage.getItem("token"))
         return this.http.get(this.host+"/avatar/"+imageName,{headers,responseType: "blob"});
     }
+
+    // modifyProfile(){
+    //
+    // }
 }

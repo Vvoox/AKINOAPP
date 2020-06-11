@@ -38,7 +38,7 @@ export class CamerapagePage implements OnInit {
               .then((status: QRScannerStatus) => {
                   if (status.authorized) {
                       let scanSub = this.qrScanner.scan().subscribe((text: string) => {
-                          localStorage.setItem('code',text);
+                          localStorage.setItem('url',text);
                           this.qrScanner.hide(); // hide camera preview
                           scanSub.unsubscribe(); // stop scanning
                           this.navCtrl.pop();

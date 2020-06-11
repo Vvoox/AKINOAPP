@@ -178,13 +178,32 @@ const routes: Routes = [
     loadChildren: () => import('./components/camerapage/camerapage.module').then(m => m.CamerapagePageModule)
   },
   {
-    path: 'scan/:id',
+    path: 'scan',
     loadChildren: () => import('./components/scan/scan.module').then(m => m.ScanPageModule)
   },
-  {
-    path: 'scan/:id/scan',
+ {
+    path: 'scan/1/home',
     redirectTo:'scan'
   },
+  {
+    path: 'scan/scan',
+    redirectTo:'scan'
+  },
+  {
+    path: 'scan/scan',
+    redirectTo:'scan'
+  },{
+    path: 'scan/home/scan',
+    redirectTo:'scan'
+  },
+  {
+    path: 'scan/home',
+    loadChildren: () => import('./components/home/home.module').then(m => m.HomePageModule)
+  },
+  // {
+  //   path: 'scan/home/scan',
+  //   loadChildren: () => import('./components/scan/scan.module').then(m => m.ScanPageModule)
+  // },
 
 ];
 

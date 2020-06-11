@@ -11,11 +11,11 @@
 <!--&lt;!&ndash;    </ion-buttons>&ndash;&gt;-->
 <!--    </ion-toolbar>-->
 <!--</ion-header>-->
-<ion-content class="background" mode="ios">
+<ion-content mode="ios">
   <form [formGroup]="loginFormGroup" (ngSubmit)="presentLoading()" >
 
   <br><br><br>
-  <ion-card mode="ios">
+    <ion-card-content mode="ios">
     <ion-item>
       <ion-avatar slot="start" style="width: 60px ;height: 60px;">
         <img  src="assets/background/logo1.png" >
@@ -23,7 +23,7 @@
         <ion-card-title style="font-family: Granada">AKINOBANK</ion-card-title>
 
     </ion-item>
-  </ion-card>
+  </ion-card-content>
   <ion-tabs>
     <ion-tab-bar slot="bottom">
 
@@ -66,10 +66,10 @@
 
   </ion-card>
 
-  <ion-card id="buttonSubmit">
+  <ion-card-content>
     <ion-button type="submit" expand="block" color="primary" [disabled]="!loginFormGroup.valid" >Connect</ion-button>
 
-  </ion-card>
+  </ion-card-content>
   </form>
 
   <!--  <button class="bottom" ion-button clear full color="light">Don't have an account? Sign up</button>-->

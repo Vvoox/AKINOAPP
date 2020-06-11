@@ -31,7 +31,7 @@ export class LoginService {
   forgetPassword(email){
     let data = new FormData();
     data.append('email',email);
-    return this.http.post(this.host+"/forgot_password",data,{responseType:'text'});
+    return this.http.post("http://192.168.1.100:8080/api/forgot_password",data,{responseType:'text'});
   }
 
 }
